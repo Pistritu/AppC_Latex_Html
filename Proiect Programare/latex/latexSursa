@@ -1,0 +1,339 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\renewcommand\familydefault{\sfdefault}
+\usepackage{tgheros}
+\usepackage[defaultmono]{droidmono}
+
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+left=25mm,right=25mm,%
+bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+\linespread{1.3}
+
+\newcommand{\linia}{\rule{\linewidth}{0.5pt}}
+
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{center}
+\vspace{2ex}
+{\huge \textsc{\@title}}
+\vspace{1ex}
+\\
+\linia\\
+\@author \hfill \@date
+\vspace{4ex}
+\end{center}
+}
+\makeatother
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{Proiect programare}
+\cfoot{}
+\rfoot{Pagina \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% code listing settings
+\usepackage{pxfonts}
+\usepackage{listings}
+\lstset{
+    language=C,
+    basicstyle=\ttfamily,
+    aboveskip={1.0\baselineskip},
+    belowskip={1.0\baselineskip},
+    columns=fixed,
+    extendedchars=true,
+    breaklines=true,
+    tabsize=4,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=lines,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    keywordstyle=\bfseries,
+    commentstyle=\color[rgb]{0,0,0},
+    stringstyle=\color[rgb]{0,0,0},
+    numbers=left,
+    numberstyle=\small,
+    stepnumber=1,
+    numbersep=10pt,
+    captionpos=t,
+    morekeywords={SafeCat,SafeCpy,SafeLen,SafeGets},
+    escapeinside={\%*}{*)}}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Facultatea de Automatic\u{a}, Calculatoare si Electronic\u{a}}\\[1.5cm] 
+\textsc{\Large Proiect la Tehnici de Programare}\\[0.5cm]
+\textsc{\large Grupa 10104 A}\\[0.5cm]
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Problem\u{a} de reducere a tijei}\\[0.4cm]
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Autor:}\\
+Pistri\c{t}u \textsc{Ionu\c{t}-Lauren\c{t}iu}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Profesori:} \\
+Badica Costin; \textsc{  Becheru Alex}
+\end{flushright}
+\end{minipage}\\[4cm]
+\end{titlepage}
+
+\newpage
+
+\section{*Problem\u{a} de reducere a tijei:}
+Av\^{a}nd o tij\u{a} de lungime n \c{s}i un tabel de pre\c{t}uri pentru tije de
+lungime de la 1 la n, determina\c{t}i veniturile maxime care pot fi ob\c{t}inute prin t\u{a}ierea in sus a
+tijei si vanzarea pieselor.\\[1mm]
+Re\c{t}ineti c\u{a} o soluție optim\u{a} este reprezentat\u{a} de nici o taietur\u{a}.}\par\\
+[1cm]
+
+\section{Pseudocod}\\[0.4cm]
+
+1. \hspace{2ex}\textbf{constant } lungime\_max  \Leftarrow 40\\
+2. \hspace{2ex}\textbf{ constant } lungime\_twen  \Leftarrow 20\\
+3. \hspace{2ex}\textbf{ constant } lungime\_fift \Leftarrow 15\\
+4. \hspace{2ex}\textbf{ constant } lungime\_ten  \Leftarrow 10\\
+5. \hspace{2ex}\textbf{ constant } lungime\_min  \Leftarrow 1\\
+6. \textbf{ cite\c{s}te } change\\
+7. tija\_max\Leftarrow change/lungime\_max * 600\\
+8. change\Leftarrow change\%lungime\_max\\
+9. \textbf{ scrie } change/lungime\_max, change/lungime\_max*600\\
+10. tija\_twen\Leftarrow change/lungime\_twen * 320\\
+11. change\Leftarrow change\%lungime\_twen\\
+12. \textbf{ scrie } change/lungime\_twen, change/lungime\_twen*320\\
+13. tija\_fift\Leftarrow change/lungime\_fift * 255\\
+14. change\Leftarrow change\%lungime\_fift\\
+15. \textbf{ scrie } change/lungime\_fift, change/lungime\_fift*255\\
+16. tija\_ten\Leftarrow change/lungime_ten * 180\\
+17. change\Leftarrow change\%lungime\_ten\\
+18. \textbf{ scrie } change/lungime\_ten, change/lungime\_ten*180\\
+19. tija\_min\Leftarrow change/lungime\_min * 20\\
+20. change\Leftarrow change\%lungime\_min\\
+21. \textbf{ scrie} change/lungime\_min, change/lungime\_min*20\\
+22. cost\_total\Leftarrow tija\_max + tija\_twen + tija\_fift + tija\_ten + tija\_min\\
+23. \textbf{ scrie } cost\_total\\
+
+\newpage
+
+\section{Design-ul aplica\c{t}iei}
+Presupunem c\u{a} dorim s\u{a} achizitionam o tij\u{a} metalic\u{a}.\\
+Pentru a ob\c{t}ine un profit maxim \c{s}i a putea vinde toate buca\c{t}ile de tij\u{a} am stabilit c\u{a} acestea pot fi v\^{a}ndute \^{i}n buc\u{a}ti de 40 metri (tij\u{a} intreag\u{a}), 20 metri, 15 metri, 10 metri \c{s}i 1 metru.\\ [0.3cm]
+\begin{center}
+ \begin{tabular}{||c c||} 
+ \hline
+ Lungime(metri) & Pre\c{t}(lei) \\ [0.5ex] 
+ \hline\hline
+ 40 & 600 & & \\
+ \hline
+ 20 & 320 && \\
+ \hline
+ 15 & 255 & & \\
+ \hline
+ 10 & 180  & &\\
+ \hline
+ 1 & 10  & &\\ 
+ \hline
+\end{tabular}
+\end{center}
+\end{figure}
+
+\^{I}n program sunt prezentate pre\c{t}urile pentru fiecare lungime de tij\u{a}. Sunt  stabilete de la inceput constantele pentru lungimile de tij\u{a}.\\
+\^{I}n continuare programul permite introducerea unui num\u{a}r natural care reprezint\u{a} lungimea tijei pe care clientul doreste s\u{a} o achizi\c{t}ioneze.\\
+Este scanat\u{a} lungimea \c{s}i sunt oferite informa\c{t}ii despre buca\c{t}ile de tij\u{a} pe care le poate primii clientul \c{s}i  costul acestora.\\
+\newpage
+Pentru a fi returnat rezultatul cel mai convenabil \c{s}i profitabil, se efectueaz\u{a} urmatoarele calcule matematice:\\
+Lungimea tijei introdus\u{a}, reprezentat\u{a} de variabila \textbf{change} este impar\c{t}it\u{a} la tija\u{a} cu lungime maxim\u{a} (40 metri).\\\c{s}
+Catul astfel ob\c{t}inut repretin\u{a} num\u{a}rul de tije cu lungimea de 40 metri care le va primi clientul, iar acest rezultat este inmul\c{t}it cu pre\c{t}ul unei tije de aceast\u{a} dimensiune (600 lei) \c{s}i se afiseaz\u{a} costul acestora.\\
+$$tija\_max=\frac{change}{lungime\_max}*600;$$\\
+$$change=(change\%lungime\_max);$$\\
+In continuare, restul  impar\c{t}irii este preluat de variabila \textbf{change} si impartit la tija cu lungimea de 20 metri.\\  
+Catul acesta reprezint\u{a} num\u{a}rul de tije cu lungimea de 20 metri care le va primi clientul, iar acest rezultat este inmul\c{t}it cu pre\c{t}ul unei tije (320 lei) \c{s}i se afiseaz\u{a} costul acestora.\\
+$$tija\_twen=\frac{chang}{lungime\_twen}*320;$$\\
+$$change=(change\%lungime\_twen);$$\\
+ Restul de la a doua impar\c{t}ire este preluat de variabila \textbf{change} \c{s}i impartit la tija cu lungimea de 15 metri.  \\
+Catul astfel ob\c{t}inut reprezint\u{a} num\u{a}rul de tije cu lungimea de 15 metri care le va primi clientul, iar acest rezultat este\u{a} inmul\c{t}it cu pre\c{t}ul unei tije (255 lei) \c{s}i se afiseaz\u{a} costul acestora.\\
+$$tija\_fift=\frac{change}{lungime\_fift}*255;$$\\
+$$change=(change\%lungime\_fift);$$\\
+ Restul de la a treia impar\c{t}ire este preluat de variabila \textbf{change} \c{s}i impar\c{t}it la tija cu lungimea de 10 metri. \\ 
+Catul astfel ob\c{t}inut reprezint\u{a} num\u{a}rul de tije cu lungimea de 10 metri care le va primi clientul, iar acest rezultat este inmul\c{t}it cu pre\c{t}ul unei tije (180 lei) \c{s}i se afiseaz\u{a} costul acestora.\\
+\newpage
+$$tija\_ten=\frac{change}{lungime\_ten}*180;$$\\
+$$change=(change\%lungime\_ten);$$\\ 
+ \^{I}n final, restul de la a patra impar\c{t}ire este preluat de variabila \textbf{change} \c{s}i impar\c{t}it la tija cu lungimea de 1 metru.\\  
+Catul astfel ob\c{t}inut reprezint\u{a} numarul de tije cu lungimea de 1 metru care le va primi clientul, iar acest rezultat este inmul\c{t}it cu pre\c{t}ul unei tije (20 lei) \c{s}i se afiseaz\u{a} costul acestora.\\
+$$tija\_min=\frac{change}{lungime\_min}*20;$$\\
+$$change=(change\%lungime\_min);$$ \\
+Costul total este ob\c{t}inut prin adunarea costurilor ob\c{t}inute la fiecare tij\u{a}.\\
+ $$cost\_total=(tija\_max + tija\_twen + tija\_fift + tija\_ten + tija\_min)$$\\
+ Programul se inchide dupa afisarea pre\c{t}ului total care il clientul il datoreaz\u{a} magazinului.\\
+ 
+ \subsection{Date de intrare}
+ Este citit de la tastatur\u{a} un num\u{a}r natural care reprezint\u{a} lungimea tijei.\\
+ \subsection{Fisiere}
+ Fi\c{s}ierul folosit in cadrul aplica\c{t}iei este:
+ \subsubsection{main.c}
+ contine numai functia \textbf{ main() } care reprezint\u{a} corpul principal al programului.\\
+ Aici se desfasoar\u{a} toate calculele. De asememenea masur\u{a}m timpul de executie al programului.\\
+ \newpage
+ \subsection{Date de ie\c{s}ire}
+\textbf{   Programul returneaz\u{a}:}
+ \begin{itemize}
+ \item num\u{a}rul de tije.
+ \item costul pentru fiecare tip de tij\u{a}.
+ \item costul total al tijelor.
+ \end{itemize}
+
+\section{Teste \c{s}i rezultate}
+Problema tijei metalice a fost scris\u{a} \^{i}n limbajul standard {\bf C} \c{s}i a fost compilat folosind dou\u{a} compilatoare diferite, compilatorul propriu GCC folosind CodeBlocks \c{s}i Microsoft Visual Studio 2013.
+\subsection{GCC}
+Cu acest compilator am realizat 4 teste.
+\subsubsection{Test 1}
+-lungime tij\u{a}: 93 metri\\
+-durata de executie: 4.264s\\
+\begin{center}
+ \begin{tabular}{||c c c||} 
+ \hline
+ Lungime(metri) & Num\u{a}r & Pre\c{t}(lei) \\ [0.5ex] 
+ \hline\hline
+ 40 & 2 & 1200 & & \\
+ \hline
+ 10 & 1 & 180 && \\
+ \hline
+ 1 & 3 & 60 & & \\ 
+ \hline
+ Cost total & - & 1440 && \\[1ex]
+ \hline
+\end{tabular}
+\end{center}
+\end{figure}
+
+\includegraphics[scale=0.50]{1p.png}
+
+\subsubsection{Test 2}
+-lungime tij\u{a}: 37 metri\\
+-durata de execu\c{t}ie: 4.408s\\
+
+\begin{center}
+ \begin{tabular}{||c c c||} 
+ \hline
+ Lungime(metri) & Num\u{a}r & Pre\c{t}(lei) \\ [0.5ex] 
+ \hline\hline
+ 20 & 1 & 320 & & \\
+ \hline
+ 15 & 1 & 255 && \\
+ \hline
+ 1 & 2 & 40 & & \\
+ \hline
+ Cost total & - & 615 &&\\
+ \hline
+\end{tabular}
+\end{center}
+\end{figure}
+
+\includegraphics[scale=0.60]{2p.png}
+
+\subsubsection{Test 3}
+-lungime tij\u{a}: 315 metri\\
+-durata de execu\c{t}ie: 5.982s\\
+
+\begin{center}
+ \begin{tabular}{||c c c||} 
+ \hline
+ Lungime(metri) & Num\u{a}r & Pre\c{t}(lei) \\ [0.5ex] 
+ \hline\hline
+ 40 & 24999 & 1499940 & & \\
+ \hline
+ 20 & 1 & 320 & & \\
+ \hline
+ 15 & 1 & 255 & & \\
+ \hline
+ 1 & 4 & 80 & & \\
+ \hline
+ Cost total & - & 15000055 &&\\
+ \hline
+\end{tabular}
+\end{center}
+\end{figure}
+
+\includegraphics[scale=0.60]{3p.png}
+
+\subsubsection{Test 4}
+-lungime tij\u{a}: 454 metri\\
+-durata de execu\c{t}ie: 4.829s\\
+
+\begin{center}
+ \begin{tabular}{||c c c||} 
+ \hline
+ Lungime(metri) & Num\u{a}r & Pre\c{t}(lei) \\ [0.5ex] 
+ \hline\hline
+ 40 & 11 & 6600 & & \\
+ \hline
+ 10 & 1 & 180 && \\
+ \hline
+ 1 & 4 & 80 & & \\ 
+ \hline
+ Cost total & - & 6860 && \\[1ex]
+ \hline
+\end{tabular}
+\end{center}
+\end{figure}
+
+\includegraphics[scale=0.60]{4.png}
+
+
+\section{Concluzii}
+Se observ\u{a} c\u{a} programul ruleaz\u{a} bine at\^{a}ta timp cat este introdus\u{a} o valoare care apar\c{t}ine domeniului \textbf{int }(16 biti,  -32768...+32767) Timpul de execu\c{t}ie este foarte mic \c{s}i se observ\u{a} c\u{a} acesta cre\c{s}te cu c\^{a}t valoare introdus\u{a} este mai mare.
+Programul poate fi folosit \c{s}i in alte domenii.
+De exeplu dac\u{a} \u{a}avem o cantitate mai mare de lichid, programul ne poate informa de cate recipiente \c{s}i ce capacitate s\u{a} aib\u{a} acestea pentru a putea transporta lichidul.
+
+
+\section{Referin\c{t}e}
+\href{https://docs.google.com/file/d/
+0B2Q8Nd2L-6PjN2I0MzEzZDYtM2JhNC00NzJlLWFhMGQtZWUyMWE0N2M4MGM4/edit}
+{The Practice Of Programming  Brian W. Kernighan , Rob Pike}
+
+\href{https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx1Y3Z0cGxhYnxneDoxNGE0OGM0NWRjNmQ0ZmI0}
+\end{document}
